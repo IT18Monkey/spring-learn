@@ -5,6 +5,7 @@ dependencies {
     )
     testCompile(
             'org.springframework:spring-test:4.3.8.RELEASE',
-            'junit:junit:4.12'
+            'junit:junit:4.12',
+            'com.github.stefanbirkner:system-rules:1.16.0'
     )
 }
