@@ -3,12 +3,10 @@ package com.whh.config;
 import com.whh.business.service.CDPlayer;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.contrib.java.lang.system.StandardOutputStreamLog;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -21,6 +19,7 @@ public class SpringConfigTest extends AbstractJUnit4SpringContextTests {
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
     @Autowired
     private CDPlayer cdPlayer;
+
     @Test
     public void CDPlayerTest() {
         cdPlayer.play();

@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ImportResource;
  * @Date 2017/5/9 17:41
  */
 @Configuration
-@ImportResource("classpath:/**/spring-*.xml")
+@ImportResource("classpath:/spring/spring-*.xml")
 @ComponentScan(basePackages = "com.whh.*")
 public class SpringConfig {
     @Bean(name = "cdPlayer")
