@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <properties resource="jdbc.properties"/>
+    <properties resource="properties/jdbc.properties"/>
     <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
 
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
@@ -19,13 +19,12 @@
                         password="${jdbc.password}">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="test.model" targetProject="E:download"/>
+        <javaModelGenerator targetPackage="com.whh.business.model" targetProject="E:\download"/>
 
-        <sqlMapGenerator targetPackage="mapper" targetProject="E:download"/>
+        <sqlMapGenerator targetPackage="com.whh.business.xml" targetProject="E:\download"/>
 
-        <javaClientGenerator targetPackage="test.mapper" targetProject="E:download" type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="com.whh.business.mapper" targetProject="E:\download" type="XMLMAPPER"/>
 
-        <table tableName="user">
-        </table>
+        <table tableName="%"></table>
     </context>
 </generatorConfiguration>
