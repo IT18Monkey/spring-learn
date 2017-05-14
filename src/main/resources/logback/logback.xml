@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 别用绝对路径，若是带参数差别容器路径诠释可能差别-->
+    <property name="log.root.level" value="DEBUG" /> <!-- 日记级别 -->
+    <property name="log.other.level" value="DEBUG" /> <!-- 其异日志级别 -->
+    <property name="log.base" value="logs" /> <!-- 日记路径，这里是相对路径，web项目eclipse下会输出到eclipse的安装目次下，若是安排到linux上的tomcat下，会输出到tomcat/bin目次 下 -->
+    <property name="log.moduleName" value="spring-learn" />  <!-- 模块名称， 影响日记设置名，日记文件名 -->
+    <property name="log.max.size" value="100MB" /> <!-- 日记文件巨细 -->
+
+    <!--掌握台输出 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread]%logger{56}.%method\(\):%L -%msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- 日记文件输出 -->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${log.base}/${log.moduleName}.log</File><!-- 设置日记不凌驾${log.max.size}时的生存路径，注重若是 是web项目会生存到Tomcat的bin目次 下 -->
+        <!-- 转动记载文件，先将日记记载到指定文件，当切合某个前提时，将日记记载到其他文件。-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.base}/archive/${log.moduleName}_all_%d{yyyy-MM-dd}.%i.log.zip
+            </FileNamePattern>
+            <!-- 当天的日记巨细 凌驾${log.max.size}时,紧缩日记并生存 -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${log.max.size}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <!-- 日记输出的文件的花样  -->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread]%logger{56}.%method\(\):%L -%msg%n</pattern>
+        </layout>
+    </appender>
+
+    <!-- 为某个包下的所有类的指定Appender 这里也可以指定类名称例如：com.aa.bb.ClassName -->
+    <logger name="com.lin" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="stdout" />
+        <appender-ref ref="file" />
+    </logger>
+    <!-- root将级别为“DEBUG”及年夜于“DEBUG”的日记信息交给已经设置好的名为“Console”的appender处置惩罚，“Console”appender将信息打印到Console -->
+    <root level="debug">
+        <appender-ref ref="stdout" /> <!-- 标识这个appender将会添加到这个logger -->
+        <appender-ref ref="file" />
+    </root>
+</configuration>

@@ -17,6 +17,7 @@
 
     <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sessionFactory">
         <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath*:com.whh.*.mapper/*.xml"/>
         <property name="plugins">
             <array>
                 <!--分页插件-->

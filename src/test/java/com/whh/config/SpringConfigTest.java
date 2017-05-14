@@ -22,6 +22,8 @@ import static junit.framework.TestCase.assertEquals;
  */
 @ContextConfiguration("classpath:/spring/spring-*.xml")
 public class SpringConfigTest extends AbstractTransactionalJUnit4SpringContextTests {
+//    private static final Logger logger = LoggerFactory.getLogger(SpringConfigTest.class);
+
     @Rule
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
     @Autowired
